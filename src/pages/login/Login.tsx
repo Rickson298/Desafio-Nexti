@@ -32,15 +32,22 @@ export const Login = () => {
             <h1>{t("signUp")}</h1>
             <div className="inputs">
               <label htmlFor="user">{t("user")}</label>
-              <Input value={user} onChange={handleUser} id="user" />
+              <Input
+                data-cy="user"
+                value={user}
+                onChange={handleUser}
+                id="user"
+              />
               <label htmlFor="user">{t("password")}</label>
               <Input
+                data-cy="password"
                 value={password}
                 onChange={handlePassword}
                 type="password"
               />
             </div>
             <button
+              data-cy="button-login"
               onClick={() => {
                 if (isAuthenticate) {
                   localStorage.setItem("user", "user");

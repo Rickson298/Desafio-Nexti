@@ -59,9 +59,10 @@ const Header: React.FC<Props> = ({ onClickMenuIcon }) => {
       />
       <C.OptionWithModal>
         <MdOutlineLanguage className="icon" size={32} />
-        <C.OptionsModal>
+        <C.OptionsModal data-cy="modal-language">
           {languages.map((language) => (
             <button
+              data-cy={language.value}
               style={{
                 fontWeight: language.value === i18n.language ? "600" : "normal",
                 fontSize: language.value === i18n.language ? "18px" : "16px",

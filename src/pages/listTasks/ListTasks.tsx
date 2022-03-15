@@ -19,32 +19,30 @@ export const ListTasks = () => {
   // }, []);
 
   const [currentSubMenu, setCurrentSubMenu] = useState(0);
-  const [isOpen, setIsOpen] = useState(false);
+  const [isOpenSideBar, setIsOpenSideBar] = useState(false);
   const { t } = useTranslation();
 
   const currentCard = itens.find((item) => item.id === currentSubMenu);
 
   return (
     <>
-      <Header onClickMenuIcon={() => setIsOpen(!isOpen)} />
+      <Header onClickMenuIcon={() => setIsOpenSideBar(!isOpenSideBar)} />
       <C.Container>
-        <C.SideBarTasks isOpen={isOpen}>
+        <C.SideBarTasks isOpen={isOpenSideBar}>
           <div className="container-side">
             <div className="iconUser-container">RO</div>
             <span className="novo">{t("new")}</span>
           </div>
           <div>
-            <div>
               {menus.map((menu) => (
                 <Task
-                  onClickSubmenu={() => setIsOpen(!isOpen)}
+                  onClickSubmenu={() => setIsOpenSideBar(!isOpenSideBar)}
                   setCurrentSubMenu={setCurrentSubMenu}
                   dataSubMenus={menu.subMenus}
                   key={menu.id}
                   taskName={menu.name}
                 />
               ))}
-            </div>
           </div>
         </C.SideBarTasks>
         <C.List>

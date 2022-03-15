@@ -28,7 +28,7 @@ export const Login = () => {
       <Header />
       <C.Container>
         <C.BoxLogin>
-          <div className="content-box">
+          <form>
             <h1>{t("signUp")}</h1>
             <div className="inputs">
               <label htmlFor="user">{t("user")}</label>
@@ -58,7 +58,7 @@ export const Login = () => {
             >
               LOG IN
             </button>
-          </div>
+          </form>
           <div className="sideBar" />
         </C.BoxLogin>
       </C.Container>

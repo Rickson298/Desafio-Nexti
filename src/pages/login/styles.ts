@@ -10,7 +10,7 @@ export const Container = styled.div`
   background: ${({ theme }) => theme.colors.backgroundPrimary};
 `;
 
-export const BoxLogin = styled.form`
+export const BoxLogin = styled.div`
   width: 450px;
   height: 450px;
   border: ${({ theme }) => theme.colors.border};
@@ -27,7 +27,7 @@ export const BoxLogin = styled.form`
     width: 100%;
   }
 
-  .content-box {
+  form{
     display: flex;
     flex-direction: column;
     justify-content: space-around;

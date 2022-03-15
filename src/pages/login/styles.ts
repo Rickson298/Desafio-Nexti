@@ -10,7 +10,7 @@ export const Container = styled.div`
   background: ${({ theme }) => theme.colors.backgroundPrimary};
 `;
 
-export const BoxLogin = styled.div`
+export const BoxLogin = styled.form`
   width: 450px;
   height: 450px;
   border: ${({ theme }) => theme.colors.border};

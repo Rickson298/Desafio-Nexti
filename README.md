@@ -5,6 +5,8 @@ Este projeto foi criado com [Create React App](https://github.com/facebook/creat
 ## Deploy
 
 Link: https://desafio-nexti-rickson298.vercel.app/
+Usuário autorizado: user
+Senha:123
 
 ## Scripts
 

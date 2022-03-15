@@ -2,6 +2,12 @@
   "translation": {
     "signUp": "Sign UP",
     "user": "User",
-    "password": "Password"
+    "password": "Password",
+    "new": "New",
+    "assign": "Assign",
+    "archive": "Archive",
+    "schedule": "Schedule",
+    "search": "Search",
+    "settings": "Settings"
   }
 }

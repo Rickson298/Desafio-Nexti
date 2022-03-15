@@ -6,8 +6,27 @@ export const Container = styled.div`
   display: flex;
   align-items: center;
   justify-content: end;
-  padding: 0 30px;
   gap: 30px;
+  padding: 0 30px;
+  color: white;
+
+  .menu-icon {
+    padding: 5px;
+    border-radius: 15px;
+    margin-right: auto;
+    cursor: pointer;
+    transition: all ease 0.2s;
+    width: 30px;
+    height: 30px;
+    visibility: hidden;
+    @media (max-width: 900px) {
+      visibility: visible;
+    }
+    &:hover {
+      background: #ccc;
+      color: black;
+    }
+  }
 `;
 
 export const OptionsModal = styled.div`
@@ -17,6 +36,7 @@ export const OptionsModal = styled.div`
   padding: 25px;
   transition: all ease 0.2s;
   border-radius: 8px;
+  z-index: 9999;
   top: 35px;
   width: 150px;
   right: 0;
@@ -36,11 +56,12 @@ export const OptionsModal = styled.div`
   }
 `;
 
-export const Options = styled.div`
+export const OptionWithModal = styled.div`
   display: flex;
   align-items: center;
   height: 40px;
   position: relative;
+  color: white;
 
   button {
     background: none;

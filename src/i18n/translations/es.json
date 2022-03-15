@@ -2,6 +2,12 @@
   "translation": {
     "signUp": "Iniciar Sesión",
     "user": "Usuario",
-    "password": "Contraseña"
+    "password": "Contraseña",
+    "new": "Nuevo",
+    "assign": "Asignar",
+    "archive": "Archivar",
+    "schedule": "Programar",
+    "search": "Buscar",
+    "settings": "Ajustes"
   }
 }

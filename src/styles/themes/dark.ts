@@ -2,10 +2,10 @@ export const dark = {
   title: "dark",
 
   colors: {
-    backgroundPrimary: "#222",
-    backgroundSecundary: "#D63AF9",
-    textPrimary: "#ccc",
-    textSecundary: "#333",
+    backgroundPrimary: "#38444c",
+    backgroundSecundary: "#333",
+    textPrimary: "#ddd",
+    textSecundary: "#fff",
     border: "1px solid #585858",
   },
 };

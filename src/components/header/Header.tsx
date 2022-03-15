@@ -1,25 +1,53 @@
 import React, { useContext } from "react";
+import { useTranslation } from "react-i18next";
+import { FiMenu } from "react-icons/fi";
+import { MdOutlineLanguage } from "react-icons/md";
 import Switch from "react-switch";
 import { ThemeContext } from "styled-components";
-import { useAuth } from "../../utils/useAuth";
-import { MdOutlineLanguage } from "react-icons/md";
-import { useTranslation } from "react-i18next";
-import * as C from "./styles";
 import { languages } from "../../constants/languages";
+import { useAuth } from "../../hooks/useAuth";
+import { useTheme } from "../../hooks/useTheme";
+import { dark } from "../../styles/themes/dark";
+import { light } from "../../styles/themes/light";
+import * as C from "./styles";
 
 interface Props {
-  toggleTheme(): void;
+  onClickMenuIcon?: () => void;
 }
 
-const Header: React.FC<Props> = ({ toggleTheme }) => {
+const Header: React.FC<Props> = ({ onClickMenuIcon }) => {
   const { colors, title } = useContext(ThemeContext);
   const { isAuth, setIsAuth } = useAuth();
-  const { i18n } = useTranslation();
+  const { i18n, t } = useTranslation();
+  const { theme, setTheme } = useTheme();
+
+  const changeTheme = () => {
+    theme.title === "dark" ? setTheme(light) : setTheme(dark);
+  };
 
   return (
     <C.Container>
+      {isAuth && (
+        <>
+          <FiMenu onClick={onClickMenuIcon} className="menu-icon" />
+
+          <C.OptionWithModal>
+            <span>{t("settings")}</span>
+            <C.OptionsModal>
+              <button
+                onClick={() => {
+                  setIsAuth(false);
+                  localStorage.removeItem("user");
+                }}
+              >
+                Logout
+              </button>
+            </C.OptionsModal>
+          </C.OptionWithModal>
+        </>
+      )}
       <Switch
-        onChange={toggleTheme}
+        onChange={changeTheme}
         checked={title === "dark"}
         checkedIcon={false}
         uncheckedIcon={false}
@@ -29,20 +57,8 @@ const Header: React.FC<Props> = ({ toggleTheme }) => {
         offColor={colors.backgroundPrimary}
         onColor={colors.backgroundPrimary}
       />
-      {isAuth && (
-        <C.Options>
-          <span className="configuracoes">Configurações</span>
-          <C.OptionsModal>
-            <button onClick={() => setIsAuth(false)}>Logout</button>
-          </C.OptionsModal>
-        </C.Options>
-      )}
-      <C.Options>
-        <MdOutlineLanguage
-          color={colors.backgroundPrimary}
-          className="icon"
-          size={32}
-        />
+      <C.OptionWithModal>
+        <MdOutlineLanguage className="icon" size={32} />
         <C.OptionsModal>
           {languages.map((language) => (
             <button
@@ -56,7 +72,7 @@ const Header: React.FC<Props> = ({ toggleTheme }) => {
             </button>
           ))}
         </C.OptionsModal>
-      </C.Options>
+      </C.OptionWithModal>
     </C.Container>
   );
 };

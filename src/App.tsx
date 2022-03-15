@@ -1,31 +1,25 @@
 import React from "react";
 import { Route, Routes } from "react-router-dom";
-import { DefaultTheme, ThemeProvider } from "styled-components";
-import Header from "./components/header/Header";
-import { PrivateRoute } from "./pages/PrivateRoute";
-import usePersistedState from "./hooks/usePersistState";
-import { Dashboard } from "./pages/dashboard/Dashboard";
+import { ThemeProvider } from "styled-components";
+import { useAuth } from "./hooks/useAuth";
+import { useTheme } from "./hooks/useTheme";
+import { ListTasks } from "./pages/listTasks/ListTasks";
 import { Login } from "./pages/login/Login";
-import { dark } from "./styles/themes/dark";
-import { light } from "./styles/themes/light";
+import { PrivateRoute } from "./pages/PrivateRoute";
 
 function App() {
-  const [theme, setTheme] = usePersistedState<DefaultTheme>("theme", light);
-
-  const toggleTheme = () => {
-    setTheme(theme.title === "light" ? dark : light);
-  };
+  const { theme } = useTheme();
+  const { isAuth } = useAuth();
 
   return (
     <ThemeProvider theme={theme}>
-      <Header toggleTheme={toggleTheme} />
       <Routes>
-        <Route path="/" element={<Login />} />
+        <Route path="/" element={isAuth ? <ListTasks /> : <Login />} />
         <Route
-          path="/dashboard"
+          path="/list-tasks"
           element={
             <PrivateRoute>
-              <Dashboard />
+              <ListTasks />
             </PrivateRoute>
           }
         />

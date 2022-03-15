@@ -4,6 +4,7 @@ export const Container = styled.div`
   min-width: 100vw;
   min-height: 93vh;
   display: flex;
+  padding: 25px;
   justify-content: center;
   align-items: center;
   background: ${({ theme }) => theme.colors.backgroundPrimary};
@@ -22,6 +23,10 @@ export const BoxLogin = styled.div`
   color: ${({ theme }) => theme.colors.textPrimary};
   position: relative;
 
+  @media (max-width: 750px) {
+    width: 100%;
+  }
+
   .content-box {
     display: flex;
     flex-direction: column;
@@ -32,7 +37,7 @@ export const BoxLogin = styled.div`
   }
 
   h1 {
-    color: ${({ theme }) => theme.colors.backgroundSecundary};
+    color: ${({ theme }) => theme.colors.textPrimary};
   }
 
   .sideBar {
@@ -69,18 +74,5 @@ export const BoxLogin = styled.div`
     flex-direction: column;
     gap: 15px;
     width: 100%;
-
-    input {
-      border: ${({ theme }) => theme.colors.border};
-      outline: none;
-      border-radius: 8px;
-      transition: all ease 0.2s;
-      padding: 10px;
-      background: ${({ theme }) => (theme.title === "dark" ? "#333" : "#fff")};
-      &:focus {
-        background: ${({ theme }) =>
-          theme.title === "dark" ? "#ccc" : "#f8f8f8"};
-      }
-    }
   }
 `;

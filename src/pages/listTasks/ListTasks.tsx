@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { MdFilterAlt } from "react-icons/md";
 import { Button } from "../../components/button/Button";
@@ -19,16 +19,23 @@ export const ListTasks = () => {
   // }, []);
 
   const [currentSubMenu, setCurrentSubMenu] = useState(0);
-  const [isOpen, setIsOpen] = useState(false);
+  const [isOpenSideBar, setIsOpenSideBar] = useState(false);
+  const [search, setSearch] = useState("");
   const { t } = useTranslation();
 
-  const currentCard = itens.find((item) => item.id === currentSubMenu);
+  const currentCard = useMemo(() => {
+    return itens.find((item) => item.id === currentSubMenu);
+  }, [currentSubMenu]);
+
+  let filterCard = currentCard?.subMenuItems.filter((item) =>
+    item.name.toLocaleUpperCase().includes(search.toLocaleUpperCase())
+  );
 
   return (
     <>
-      <Header onClickMenuIcon={() => setIsOpen(!isOpen)} />
+      <Header onClickMenuIcon={() => setIsOpenSideBar(!isOpenSideBar)} />
       <C.Container>
-        <C.SideBarTasks isOpen={isOpen}>
+        <C.SideBarTasks isOpen={isOpenSideBar}>
           <div className="container-side">
             <div className="iconUser-container">RO</div>
             <span className="novo">{t("new")}</span>
@@ -37,7 +44,7 @@ export const ListTasks = () => {
             <div>
               {menus.map((menu) => (
                 <Task
-                  onClickSubmenu={() => setIsOpen(!isOpen)}
+                  onClickSubmenu={() => setIsOpenSideBar(!isOpenSideBar)}
                   setCurrentSubMenu={setCurrentSubMenu}
                   dataSubMenus={menu.subMenus}
                   key={menu.id}
@@ -49,7 +56,11 @@ export const ListTasks = () => {
         </C.SideBarTasks>
         <C.List>
           <div style={{ padding: "15px 15px 10px 15px" }}>
-            <Input placeholder={t("search")} type="search" />
+            <Input
+              onChange={(e) => setSearch(e.target.value)}
+              placeholder={t("search")}
+              type="search"
+            />
           </div>
           <C.Options>
             <Checkbox />
@@ -61,7 +72,7 @@ export const ListTasks = () => {
             <MdFilterAlt className="filter" /> {/*filter icon*/}
           </C.Options>
           <div className="wrapper-cards">
-            {currentCard?.subMenuItems.map((item, index) => (
+            {filterCard?.map((item, index) => (
               <Card users={item.users} card={item} key={item.id} />
             ))}
           </div>

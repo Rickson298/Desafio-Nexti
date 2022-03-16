@@ -31,7 +31,7 @@ export const Buttons = styled.div`
   align-items: center;
 `;
 
-export const SideBarTasks = styled.aside<SidebarProps>`
+export const SideBarTasks = styled.aside<SideBarProps>`
   width: 25vw;
   border-right: ${({ theme }) => theme.colors.border};
   min-height: 93vh;

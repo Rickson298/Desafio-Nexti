@@ -1,5 +1,9 @@
 import styled from "styled-components";
 
+interface SideBarProps {
+  isOpen: boolean;
+}
+
 export const Options = styled.div`
   width: 100%;
   padding: 0px 15px;
@@ -27,11 +31,7 @@ export const Buttons = styled.div`
   align-items: center;
 `;
 
-interface SidebarOpen {
-  isOpen: boolean;
-}
-
-export const SideBarTasks = styled.div<SidebarOpen>`
+export const SideBarTasks = styled.aside<SidebarProps>`
   width: 25vw;
   border-right: ${({ theme }) => theme.colors.border};
   min-height: 93vh;
@@ -80,7 +80,7 @@ export const SideBarTasks = styled.div<SidebarOpen>`
   }
 `;
 
-export const List = styled.div`
+export const List = styled.main`
   width: 100%;
   min-height: 93vh;
   display: flex;

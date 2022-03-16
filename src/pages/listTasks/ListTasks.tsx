@@ -41,17 +41,15 @@ export const ListTasks = () => {
             <span className="novo">{t("new")}</span>
           </div>
           <div>
-            <div>
-              {menus.map((menu) => (
-                <Task
-                  onClickSubmenu={() => setIsOpenSideBar(!isOpenSideBar)}
-                  setCurrentSubMenu={setCurrentSubMenu}
-                  dataSubMenus={menu.subMenus}
-                  key={menu.id}
-                  taskName={menu.name}
-                />
-              ))}
-            </div>
+            {menus.map((menu) => (
+              <Task
+                onClickSubmenu={() => setIsOpenSideBar(!isOpenSideBar)}
+                setCurrentSubMenu={setCurrentSubMenu}
+                dataSubMenus={menu.subMenus}
+                key={menu.id}
+                taskName={menu.name}
+              />
+            ))}
           </div>
         </C.SideBarTasks>
         <C.List>

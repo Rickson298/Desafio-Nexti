@@ -23,12 +23,21 @@ export const Login = () => {
   const isAuthenticate = user === "user" && password === "123";
   const navigate = useNavigate();
   const { t } = useTranslation();
+
+  const submit = (event: React.FormEvent) => {
+    event?.preventDefault();
+    if (isAuthenticate) {
+      localStorage.setItem("user", "user");
+      setIsAuth(true);
+      navigate("/list-tasks");
+    }
+  };
   return (
     <>
       <Header />
       <C.Container>
         <C.BoxLogin>
-          <form>
+          <form onSubmit={submit}>
             <h1>{t("signUp")}</h1>
             <div className="inputs">
               <label htmlFor="user">{t("user")}</label>
@@ -37,25 +46,18 @@ export const Login = () => {
                 value={user}
                 onChange={handleUser}
                 id="user"
+                required
               />
               <label htmlFor="user">{t("password")}</label>
               <Input
+                required
                 data-cy="password"
                 value={password}
                 onChange={handlePassword}
                 type="password"
               />
             </div>
-            <button
-              data-cy="button-login"
-              onClick={() => {
-                if (isAuthenticate) {
-                  localStorage.setItem("user", "user");
-                  setIsAuth(true);
-                  navigate("/list-tasks");
-                }
-              }}
-            >
+            <button type="submit" data-cy="button-login">
               LOG IN
             </button>
           </form>

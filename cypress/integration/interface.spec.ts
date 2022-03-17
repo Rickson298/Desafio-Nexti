@@ -20,12 +20,20 @@ describe("example to-do app", () => {
   });
   it("Should change theme", () => {
     let storageTheme = JSON.parse(localStorage.getItem("theme"));
-    cy.get(".react-switch-bg").click();
+    cy.get(".config").trigger("mouseover");
+    cy.get('[data-cy="light"]').click({ force: true });
     expect(storageTheme).have.length;
   });
   it("Should change language", () => {
-    cy.get('[data-cy="modal-language"]').invoke("show");
-    cy.get('[data-cy="enUS"]').click();
-    cy.get(".novo").should("contain", "New");
+    cy.get('[data-cy="enUS"]').click({ force: true });
+    cy.get(".new").should("contain", "New");
+  });
+  it("Should show messages", () => {
+    cy.get(".sc-iqseJM > :nth-child(2) > :nth-child(1)").click(); //task button
+    cy.get(".eZMYEz > :nth-child(1)").click({ force: true }); //submenu button
+  });
+  it("Should filter messages", () => {
+    cy.get('[data-cy="input-search-messages"]').type("Joao Bosco");
+    cy.get(".sc-hKwDye").should("contain", "Joao Bosco");
   });
 });

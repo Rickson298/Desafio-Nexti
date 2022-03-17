@@ -8,6 +8,10 @@
     "archive": "Arquivar",
     "schedule": "Agendar",
     "search": "Pesquisar",
-    "settings": "Configurações"
+    "settings": "Configurações",
+    "theme": "Tema",
+    "dark": "Escuro",
+    "light": "Claro",
+    "languages": "Idiomas"
   }
 }

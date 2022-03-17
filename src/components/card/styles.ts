@@ -43,6 +43,7 @@ export const Users = styled.div`
   align-items: end;
   justify-content: end;
   height: 100%;
+  padding-right: 15px;
   gap: 5px;
   &:hover ${UsersIcon} {
     transform: translateX(0px);

@@ -27,7 +27,7 @@ export const BoxLogin = styled.div`
     width: 100%;
   }
 
-  form{
+  form {
     display: flex;
     flex-direction: column;
     justify-content: space-around;

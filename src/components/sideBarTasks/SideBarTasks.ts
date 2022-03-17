@@ -4,33 +4,6 @@ interface SideBarProps {
   isOpen: boolean;
 }
 
-export const Options = styled.div`
-  width: 100%;
-  padding: 0px 15px;
-  display: flex;
-  justify-content: start;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 15px;
-
-  .filter {
-    font-size: 26px;
-    cursor: pointer;
-    margin-left: auto;
-  }
-`;
-
-export const Container = styled.div`
-  display: flex;
-  background: ${({ theme }) => theme.colors.backgroundPrimary};
-`;
-
-export const Buttons = styled.div`
-  display: flex;
-  gap: 10px;
-  align-items: center;
-`;
-
 export const SideBarTasks = styled.aside<SideBarProps>`
   width: 25vw;
   border-right: ${({ theme }) => theme.colors.border};
@@ -50,7 +23,7 @@ export const SideBarTasks = styled.aside<SideBarProps>`
     margin-left: ${({ isOpen }) => (isOpen ? "0" : "-80%")};
   }
 
-  .iconUser-container {
+  .icon-user {
     display: flex;
     width: 45px;
     height: 45px;
@@ -62,7 +35,7 @@ export const SideBarTasks = styled.aside<SideBarProps>`
     background: blue;
   }
 
-  .novo {
+  .new {
     font-size: 14px;
     color: #f04c0c;
     font-weight: bold;
@@ -77,25 +50,5 @@ export const SideBarTasks = styled.aside<SideBarProps>`
     padding: 0px 15px 15px 15px;
     border-bottom: ${({ theme }) => theme.colors.border};
     margin-bottom: 15px;
-  }
-`;
-
-export const List = styled.main`
-  width: 100%;
-  min-height: 93vh;
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
-
-  .wrapper-cards {
-    display: flex;
-    flex-direction: column;
-    @media (max-width: 900px) {
-      gap: 15px;
-    }
-  }
-
-  @media (max-width: 900px) {
-    padding: 15px;
   }
 `;

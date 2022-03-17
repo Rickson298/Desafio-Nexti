@@ -1,6 +1,5 @@
 import { IoMdSend } from "react-icons/io";
 import { RiMessage2Fill } from "react-icons/ri";
-import { formatAbreviationName } from "../../utils/formatAbreviationName";
 import { OwnerIcon } from "../ownerIcon/OwnerIcon";
 import { UsersIcon } from "../usersIcon/usersIcon";
 import * as C from "./styles";
@@ -35,12 +34,11 @@ export const Card = ({ card, users = [] }: Props) => {
       </C.InfosCard>
       <C.Users>
         {users.map((user, index) => (
-          <UsersIcon key={index} translateX={-15 * index}>
+          <UsersIcon key={index} translateX={15 * users.length - index * 15}>
             {user}
           </UsersIcon>
         ))}
       </C.Users>
-      {/* <UsersIcon translateX={25}>li</UsersIcon> */}
     </C.Container>
   );
 };

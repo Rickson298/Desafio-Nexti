@@ -3,9 +3,10 @@ export const light = {
 
   colors: {
     backgroundPrimary: "#f6f6f6",
-    backgroundSecundary: "#38444c",
+    backgroundSecundary: "#ddd",
     textPrimary: "#585858",
     textSecundary: "black",
     border: "1px solid #ccc",
+    backgroundHeader: "#38444c",
   },
 };

@@ -6,28 +6,30 @@ import { Card } from "../../components/card/Card";
 import { Checkbox } from "../../components/checkbox/Checkbox";
 import Header from "../../components/header/Header";
 import { Input } from "../../components/input/Input";
+import { List } from "../../components/list/List";
+import { SideBarTasks } from "../../components/sideBarTasks/SideBarTasks";
 import { Task } from "../../components/task/Task";
 import { itens } from "../../constants/itens";
 import { menus } from "../../constants/menus";
 import * as C from "./styles";
 
-export const ListTasks = () => {
+export const MessagesList = () => {
   // const [fetch, tasks, loading] = useGetApi();
 
   // useEffect(() => {
   //   fetch("menu.json");
   // }, []);
 
-  const [currentSubMenu, setCurrentSubMenu] = useState(0);
+  const [currentSubMenuId, setCurrentSubMenuId] = useState(0);
   const [isOpenSideBar, setIsOpenSideBar] = useState(false);
   const [search, setSearch] = useState("");
   const { t } = useTranslation();
 
-  const currentCard = useMemo(() => {
-    return itens.find((item) => item.id === currentSubMenu);
-  }, [currentSubMenu]);
+  const currentMessages = useMemo(() => {
+    return itens.find((item) => item.id === currentSubMenuId);
+  }, [currentSubMenuId]);
 
-  let filterCard = currentCard?.subMenuItems.filter((item) =>
+  let messagesFiltered = currentMessages?.subMenuItems.filter((item) =>
     item.name.toLocaleUpperCase().includes(search.toLocaleUpperCase())
   );
 
@@ -35,26 +37,27 @@ export const ListTasks = () => {
     <>
       <Header onClickMenuIcon={() => setIsOpenSideBar(!isOpenSideBar)} />
       <C.Container>
-        <C.SideBarTasks isOpen={isOpenSideBar}>
+        <SideBarTasks isOpen={isOpenSideBar}>
           <div className="container-side">
-            <div className="iconUser-container">RO</div>
-            <span className="novo">{t("new")}</span>
+            <div className="icon-user">RO</div>
+            <span className="new">{t("new")}</span>
           </div>
           <div>
             {menus.map((menu) => (
               <Task
                 onClickSubmenu={() => setIsOpenSideBar(!isOpenSideBar)}
-                setCurrentSubMenu={setCurrentSubMenu}
+                setCurrentSubMenu={setCurrentSubMenuId}
                 dataSubMenus={menu.subMenus}
                 key={menu.id}
                 taskName={menu.name}
               />
             ))}
           </div>
-        </C.SideBarTasks>
-        <C.List>
+        </SideBarTasks>
+        <List>
           <div style={{ padding: "15px 15px 10px 15px" }}>
             <Input
+              data-cy="input-search-messages"
               onChange={(e) => setSearch(e.target.value)}
               placeholder={t("search")}
               type="search"
@@ -70,11 +73,11 @@ export const ListTasks = () => {
             <MdFilterAlt className="filter" /> {/*filter icon*/}
           </C.Options>
           <div className="wrapper-cards">
-            {filterCard?.map((item, index) => (
+            {messagesFiltered?.map((item, index) => (
               <Card users={item.users} card={item} key={item.id} />
             ))}
           </div>
-        </C.List>
+        </List>
       </C.Container>
     </>
   );

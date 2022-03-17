@@ -1,11 +1,10 @@
 import styled from "styled-components";
+import { colors } from "../../constants/colors";
 
 interface UsersIconProp {
   background?: string;
   translateX: number;
 }
-
-let colors = ["green", "blue", "red", "gray", "black", "orange", "brown"];
 
 export const UsersIcon = styled.div<UsersIconProp>`
   width: 30px;

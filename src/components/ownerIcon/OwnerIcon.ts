@@ -1,7 +1,8 @@
 import styled from "styled-components";
+import { colors } from "../../constants/colors";
 
 export const OwnerIcon = styled.div`
-  background: blue;
+  background: ${() => colors[Math.floor(Math.random() * colors.length)]};
   color: white;
   min-width: 40px;
   min-height: 40px;

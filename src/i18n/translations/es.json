@@ -8,6 +8,10 @@
     "archive": "Archivar",
     "schedule": "Programar",
     "search": "Buscar",
-    "settings": "Ajustes"
+    "settings": "Ajustes",
+    "theme": "Tema",
+    "dark": "Oscuro",
+    "light": "Claro",
+    "languages": "Idiomas"
   }
 }

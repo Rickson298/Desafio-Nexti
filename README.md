@@ -15,7 +15,7 @@ Para rodar o projeto em sua máquina, clone este repositório e em seguida insta
 #### `npm install` Para instalar as dependências
 #### `npm start` Para iniciar o servidor em localhost:3000
 #### `npm test` Teste com Jest
-#### `./node_modules/.bin/cypress open` Teste com Cypress
+#### `cypress:open` Teste com Cypress
 #### `npm run build` Caso a aplicação de algum problema com as libs
 
 ## Learn More about react

@@ -16,7 +16,12 @@ Para rodar o projeto em sua máquina, clone este repositório e em seguida insta
 #### `npm start` Para iniciar o servidor em localhost:3000
 #### `npm test` Teste com Jest
 #### `cypress:open` Teste com Cypress
-#### `npm run build` Caso a aplicação de algum problema com as libs
+
+### Caso o typescript Apresente problemas com declare modules
+No próprio VS CODE: CTRL + P e digite '>Developer:Reload Window'
+
+### Problemas com type
+#### `npm install @types/nome da lib`
 
 ## Learn More about react
 

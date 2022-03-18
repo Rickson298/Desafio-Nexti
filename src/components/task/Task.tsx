@@ -1,12 +1,10 @@
 import { useState } from "react";
 import { IoIosArrowForward } from "react-icons/io";
 import * as C from "./styles";
-
 interface SubMenu {
   id: number;
   name: string;
 }
-
 interface Props {
   taskName: string;
   dataSubMenus: SubMenu[];

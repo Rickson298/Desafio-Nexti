@@ -3,8 +3,8 @@ import { Route, Routes } from "react-router-dom";
 import { ThemeProvider } from "styled-components";
 import { useAuth } from "./hooks/useAuth";
 import { useTheme } from "./hooks/useTheme";
-import { MessagesList } from "./pages/MessagesList/MessagesList";
 import { Login } from "./pages/login/Login";
+import { MessagesList } from "./pages/MessagesList/MessagesList";
 import { PrivateRoute } from "./pages/PrivateRoute";
 
 function App() {
